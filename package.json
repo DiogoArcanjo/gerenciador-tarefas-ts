@@ -1,0 +1,25 @@
+{
+  "name": "gerenciador-tarefas-db",
+  "version": "1.0.0",
+  "description": "Gerenciador de tarefas com TypeScript, Express e SQLite",
+  "scripts": {
+    "build": "tsc -p tsconfig.cliente.json",
+    "start": "npm run build && tsx src/servidor/servidor.ts",
+    "dev": "npm run build && tsx watch src/servidor/servidor.ts",
+    "typecheck": "tsc -p tsconfig.servidor.json --noEmit"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "better-sqlite3": "^13.1.1",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

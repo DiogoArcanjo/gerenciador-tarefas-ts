@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Gerenciador de tarefas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="topo">
+      <div>
+        <h1>Minhas tarefas</h1>
+        <p id="resumo" class="resumo"></p>
+      </div>
+      <div class="progresso" role="presentation">
+        <div id="progresso-barra" class="progresso-barra"></div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <aside class="painel">
+        <h2 class="painel-titulo">Nova tarefa</h2>
+        <form id="form-nova" class="form" autocomplete="off">
+          <label class="campo">
+            <span>Título</span>
+            <input id="titulo" type="text" maxlength="80" placeholder="O que precisa ser feito?" required>
+          </label>
+          <label class="campo">
+            <span>Descrição</span>
+            <textarea id="descricao" rows="3" maxlength="200" placeholder="Detalhes (opcional)"></textarea>
+          </label>
+          <label class="campo">
+            <span>Prioridade</span>
+            <select id="prioridade">
+              <option value="baixa">Baixa</option>
+              <option value="media" selected>Média</option>
+              <option value="alta">Alta</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn-cheio">Adicionar tarefa</button>
+        </form>
+      </aside>
+
+      <main class="conteudo">
+        <div class="barra-filtros">
+          <label class="campo campo-busca">
+            <span class="so-leitor">Buscar</span>
+            <input id="busca" type="search" placeholder="Buscar por título ou descrição">
+          </label>
+          <label class="campo campo-filtro">
+            <span class="so-leitor">Filtrar por prioridade</span>
+            <select id="filtro-prioridade">
+              <option value="todas">Todas as prioridades</option>
+              <option value="alta">Alta</option>
+              <option value="media">Média</option>
+              <option value="baixa">Baixa</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="quadro" class="quadro"></div>
+      </main>
+    </div>
+  </div>
+
+  <dialog id="dialogo-edicao" class="dialogo">
+    <form id="form-edicao" class="form">
+      <h2 class="painel-titulo">Editar tarefa</h2>
+      <label class="campo">
+        <span>Título</span>
+        <input id="edit-titulo" type="text" maxlength="80" required>
+      </label>
+      <label class="campo">
+        <span>Descrição</span>
+        <textarea id="edit-descricao" rows="3" maxlength="200"></textarea>
+      </label>
+      <div class="linha-dupla">
+        <label class="campo">
+          <span>Prioridade</span>
+          <select id="edit-prioridade">
+            <option value="baixa">Baixa</option>
+            <option value="media">Média</option>
+            <option value="alta">Alta</option>
+          </select>
+        </label>
+        <label class="campo">
+          <span>Status</span>
+          <select id="edit-status">
+            <option value="pendente">Pendente</option>
+            <option value="em-andamento">Em andamento</option>
+            <option value="concluida">Concluída</option>
+          </select>
+        </label>
+      </div>
+      <div class="dialogo-acoes">
+        <button type="button" id="edit-cancelar" class="btn btn-texto">Cancelar</button>
+        <button type="submit" class="btn btn-cheio">Salvar alterações</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-texto"></span>
+    <button type="button" id="toast-desfazer" class="btn btn-toast">Desfazer</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
